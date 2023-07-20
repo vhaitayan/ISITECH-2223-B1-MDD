@@ -1,0 +1,54 @@
+DROP TABLE IF EXISTS Fruit ;
+CREATE TABLE Fruit (IdFruit_Fruit BIGINT AUTO_INCREMENT NOT NULL,
+Poids_Fruit BIGINT,
+PRIMARY KEY (IdFruit_Fruit)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Animal ;
+CREATE TABLE Animal (IdAnimal_Animal BIGINT AUTO_INCREMENT NOT NULL,
+PoidsAnimal_Animal BIGINT,
+PRIMARY KEY (IdAnimal_Animal)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Produit ;
+CREATE TABLE Produit (IdProduit_Produit BIGINT AUTO_INCREMENT NOT NULL,
+NomProduit_Produit BIGINT,
+TypeProduit_Produit BIGINT,
+vente_idvente_vente **NOT FOUND**,
+PRIMARY KEY (IdProduit_Produit)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Vente ;
+CREATE TABLE Vente (IdVente_Vente BIGINT AUTO_INCREMENT NOT NULL,
+Date_Vente BIGINT,
+TypeVente_Vente BIGINT,
+PRIMARY KEY (IdVente_Vente)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Legume ;
+CREATE TABLE Legume (IdLegume_Legume BIGINT AUTO_INCREMENT NOT NULL,
+PoidsLegume_Legume BIGINT,
+PRIMARY KEY (IdLegume_Legume)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS comprend ;
+CREATE TABLE comprend (IdAnimal_Animal **NOT FOUND** AUTO_INCREMENT NOT NULL,
+IdProduit_Produit **NOT FOUND** NOT NULL,
+PRIMARY KEY (IdAnimal_Animal,
+ IdProduit_Produit)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS dépend ;
+CREATE TABLE dépend (IdFruit_Fruit **NOT FOUND** AUTO_INCREMENT NOT NULL,
+IdProduit_Produit **NOT FOUND** NOT NULL,
+PRIMARY KEY (IdFruit_Fruit,
+ IdProduit_Produit)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS contient ;
+CREATE TABLE contient (IdLegume_Legume **NOT FOUND** AUTO_INCREMENT NOT NULL,
+IdProduit_Produit **NOT FOUND** NOT NULL,
+PRIMARY KEY (IdLegume_Legume,
+ IdProduit_Produit)) ENGINE=InnoDB;
+
+ALTER TABLE Produit ADD CONSTRAINT FK_Produit_vente_idvente_vente FOREIGN KEY (vente_idvente_vente) REFERENCES Vente (IdVente_Vente);
+
+ALTER TABLE comprend ADD CONSTRAINT FK_comprend_IdAnimal_Animal FOREIGN KEY (IdAnimal_Animal) REFERENCES Animal (IdAnimal_Animal);
+ALTER TABLE comprend ADD CONSTRAINT FK_comprend_IdProduit_Produit FOREIGN KEY (IdProduit_Produit) REFERENCES Produit (IdProduit_Produit);
+ALTER TABLE dépend ADD CONSTRAINT FK_dépend_IdFruit_Fruit FOREIGN KEY (IdFruit_Fruit) REFERENCES Fruit (IdFruit_Fruit);
+ALTER TABLE dépend ADD CONSTRAINT FK_dépend_IdProduit_Produit FOREIGN KEY (IdProduit_Produit) REFERENCES Produit (IdProduit_Produit);
+ALTER TABLE contient ADD CONSTRAINT FK_contient_IdLegume_Legume FOREIGN KEY (IdLegume_Legume) REFERENCES Legume (IdLegume_Legume);
+ALTER TABLE contient ADD CONSTRAINT FK_contient_IdProduit_Produit FOREIGN KEY (IdProduit_Produit) REFERENCES Produit (IdProduit_Produit);

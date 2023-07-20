@@ -328,3 +328,17 @@ Le MLD est le suivant Correction :
 Résultat MLD Perso :
 
 ![alt text](/TD1.png)
+
+### EXO 1
+
+Voilà le MCD :
+
+![Alt text](/Réponse%20exo/Exo%201/MCD.JPG)
+
+le MLD :
+
+![Alt text](/Réponse%20exo/Exo%201/MLD.png)
+
+Le MPD :
+![Alt text](/Réponse%20exo/Exo%201/MPD)
+
